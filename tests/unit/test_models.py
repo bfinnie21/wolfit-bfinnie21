@@ -149,3 +149,8 @@ def test_post_down_vote_cant_vote_twice(test_db, test_user, single_post):
     single_post.down_vote(test_user)
     assert single_post.vote_count == 1
 
+def test_post_down_vote_makes_count_go_down(test_db, test_user, single_post):
+    assert single_post.vote_count == 0
+    single_post.down_vote(test_user)
+    assert single_post.vote_count == -1
+
