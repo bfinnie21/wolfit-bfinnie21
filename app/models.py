@@ -72,7 +72,7 @@ class Post(db.Model):
     )
 
     def __repr__(self):
-        return f"<Post id {self.id} - {self.title}>"
+        return f"<Post id {self.id} - {self.title}>" # pragma: no cover
 
     @classmethod
     def recent_posts(cls):
@@ -142,7 +142,7 @@ class Comment(db.Model):
     )
 
     def __repr__(self):
-        return f"<Comment id {self.id} - {self.body[:20]}>"
+        return f"<Comment id {self.id} - {self.body[:20]}>" # pragma: no cover
 
     def pretty_timestamp(self):
         return pretty_date(self.timestamp)
