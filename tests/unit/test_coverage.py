@@ -38,7 +38,11 @@ def test_pretty_date_months_ago():
 def test_pretty_date_years_ago():
     assert(helpers.pretty_date(datetime.utcnow() - timedelta(days=400))) == "1 years ago"
 
-def test_pretty_int():
-    assert(helpers.pretty_date(10)) == "53 years ago"
+def test_pretty_null():
+    assert(helpers.pretty_date()) == "just now"
+
+def test_pretty_passing_int():
+    assert(helpers.pretty_date(32)) == "53 years ago"
+
 
 
