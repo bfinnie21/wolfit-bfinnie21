@@ -28,3 +28,6 @@ def test_pretty_date_yesterday():
 
 def test_pretty_date_days_ago():
     assert(helpers.pretty_date(datetime.utcnow() - timedelta(days=3))) == "3 days ago"
+
+def test_pretty_date_weeks_ago():
+    assert(helpers.pretty_date(datetime.utcnow() - timedelta(days=27))) == "3 weeks ago"
