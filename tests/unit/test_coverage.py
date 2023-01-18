@@ -19,3 +19,10 @@ def test_minutes_ago():
 
 def test_hour_ago():
     assert helpers.less_than_day(4600) == "an hour ago"
+
+def test_hours_ago():
+    assert helpers.less_than_day(60000) == "16 hours ago"
+
+def test_pretty_date_yesterday():
+    assert(helpers.pretty_date(datetime.utcnow() - timedelta(days=1))) == "Yesterday"
+
