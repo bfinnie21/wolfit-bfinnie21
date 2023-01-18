@@ -16,3 +16,6 @@ def test_minute_ago():
 
 def test_minutes_ago():
     assert helpers.less_than_day(300) == "5 minutes ago"
+
+def test_hour_ago():
+    assert helpers.less_than_day(4600) == "an hour ago"
