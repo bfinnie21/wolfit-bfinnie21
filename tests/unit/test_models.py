@@ -142,3 +142,10 @@ def test_posts_can_be_just_links_without_body(test_db, test_user):
     title = "Link post"
     new_post = Post(title=title, link=True, url="http://wou.edu")
     assert new_post.link
+
+def test_post_down_vote_cant_vote_twice(test_db, test_user, single_post):
+    assert single_post.vote_count == 0
+    single_post.up_vote(test_user)
+    single_post.down_vote(test_user)
+    assert single_post.vote_count == 1
+

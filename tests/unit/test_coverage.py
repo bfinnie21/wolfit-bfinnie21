@@ -1,6 +1,8 @@
 from app import helpers
 from datetime import datetime, timedelta
 
+from app import models
+
 from flask import url_for
 
 import pytest
@@ -43,6 +45,7 @@ def test_pretty_null():
 
 def test_pretty_passing_int():
     assert(helpers.pretty_date(32)) == "53 years ago"
+
 
 
 

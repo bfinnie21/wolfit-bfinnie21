@@ -297,3 +297,5 @@ def test_link_posts_should_have_link_to_url(client, test_user):
     db.session.commit()
     response = client.get(url_for("post", post_id=link_post.id))
     assert link_post.url.encode() in response.data
+
+
