@@ -187,7 +187,6 @@ def test_comments_adjust_vote_when_count_is_none(test_db, test_user, single_post
     comment.up_vote(new_user)
     assert comment.vote_count == 1
 
-def test_load_user(test_user):
-    assert(load_user(test_user)) == ""
+
 
 

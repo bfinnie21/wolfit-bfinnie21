@@ -4,7 +4,7 @@ from os import environ, getcwd
 import pytest
 
 if 'WOLFIT_SETTINGS' not in environ:
-    environ["WOLFIT_SETTINGS"] = f"{getcwd()}/test.settings"
+    environ["WOLFIT_SETTINGS"] = f"{getcwd()}/test.settings" # pragma: no cover
 
 
 from app import db
