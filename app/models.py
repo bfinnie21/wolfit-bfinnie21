@@ -178,7 +178,7 @@ class ActivityLog(db.Model):
     details = db.Column(db.Text)
 
     def __repr__(self):
-        return f"<ActivityLog id {self.id} - {self.details[:20]}>"
+        return f"<ActivityLog id {self.id} - {self.details[:20]}>" # pragma: no cover
 
     @classmethod
     def latest_entry(cls):

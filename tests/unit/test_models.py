@@ -169,5 +169,25 @@ def test_comments_cant_be_down_voted_after_already_voting(test_db, test_user, si
     # All comments start with a default vote count of 1
     assert comment.vote_count == 2
 
+def test_comments_can_be_down_voted(test_db, test_user, single_post_with_comment):
+    comment = single_post_with_comment.comments[0]
+    new_user = User(username="robot", email="robot@gmail.com")
+    db.session.add(new_user)
+    db.session.commit()
+    comment.down_vote(new_user)
+    # All comments start with a default vote count of 1
+    assert comment.vote_count == 0
+
+def test_comments_adjust_vote_when_count_is_none(test_db, test_user, single_post_with_comment):
+    comment = single_post_with_comment.comments[0]
+    new_user = User(username="robot", email="robot@gmail.com")
+    db.session.add(new_user)
+    db.session.commit()
+    comment.vote_count = None
+    comment.up_vote(new_user)
+    assert comment.vote_count == 1
+
+def test_load_user(test_user):
+    assert(load_user(test_user)) == ""
 
 
