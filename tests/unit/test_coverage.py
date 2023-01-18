@@ -35,4 +35,5 @@ def test_pretty_date_weeks_ago():
 def test_pretty_date_months_ago():
     assert(helpers.pretty_date(datetime.utcnow() - timedelta(days=90))) == "3 months ago"
 
-
+def test_pretty_date_days_ago():
+    assert(helpers.pretty_date(datetime.utcnow() - timedelta(days=400))) == "1 years ago"
