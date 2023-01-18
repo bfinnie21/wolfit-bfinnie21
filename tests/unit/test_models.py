@@ -154,3 +154,9 @@ def test_post_down_vote_makes_count_go_down(test_db, test_user, single_post):
     single_post.down_vote(test_user)
     assert single_post.vote_count == -1
 
+def test_adjust_vote_count_is_none(test_db, test_user, single_post):
+    single_post.vote_count = None
+    single_post.adjust_vote(1)
+    assert single_post.vote_count == 1
+
+
