@@ -17,6 +17,7 @@ urllib3 = "*"
 email-validator = "*"
 coverage = "*"
 pytest = "*"
+requests = "*"
 
 [dev-packages]
 "flake8" = "*"

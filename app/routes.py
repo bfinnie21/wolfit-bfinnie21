@@ -95,7 +95,8 @@ def create_post():
         )
         db.session.add(post)
         db.session.commit()
-        ActivityLog.log_event(current_user.id, f"Create: {post}")
+        ActivityLog.log_event(current_user.id, post.title)
+        # ActivityLog.log_event(current_user.id, f"Create: {post}")
         flash("Your post is now live!")
         return redirect(url_for("index"))
     return render_template(
