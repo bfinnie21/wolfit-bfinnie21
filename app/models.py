@@ -3,6 +3,7 @@ import requests
 from flask_login import UserMixin
 import json
 import markdown
+import os
 
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -182,15 +183,14 @@ class ActivityLog(db.Model):
 
     @classmethod
     def latest_entry(cls):
-    #     return cls.query.order_by(ActivityLog.id.desc()).first()
-        get_url = "http://127.0.0.1:5001/api/activities"
+        log_url = os.environ.get("LOG_URL")
+        get_url = log_url + "/api/activities"
         try:
             r = requests.get(get_url)
             if r.status_code == 200:
                 print(f"Get activities SUCCESS at {get_url}")
                 activities = json.loads(r.text)
                 single_activity_id = 0
-                print(activities)
                 if isinstance(activities, dict):
                     if "activities" in activities:
                         single_activity_id = activities["activities"][0]["id"]
@@ -212,14 +212,10 @@ class ActivityLog(db.Model):
 
     @classmethod
     def log_event(cls, user_id, details):
-    #     e = cls(user_id=user_id, details=details)
-    #     db.session.add(e)
-    #     db.session.commit()
+        log_url = os.environ.get("LOG_URL")
         u = user_id
         d = details
-        print(u)
-        print(d)
-        post_url = "http://127.0.0.1:5001/api/activities"
+        post_url = log_url + "/api/activities"
         new_activity = {
             "user_id": u,
             "username": "bfin",

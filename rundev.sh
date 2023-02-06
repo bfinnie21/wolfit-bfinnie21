@@ -2,4 +2,5 @@
 export FLASK_ENV=development
 export FLASK_DEBUG=0
 export WOLFIT_SETTINGS=$(pwd)/dev.settings
-flask run --host=0.0.0.0 --port=8080
+export LOG_URL="http://127.0.0.1:5001"
+flask run --host=0.0.0.0 --port=8082
